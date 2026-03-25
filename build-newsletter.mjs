@@ -138,10 +138,10 @@ const CARD_WHITE_TEMPLATE = `          <!-- property card (light) -->
                   <td style="padding:12px 0 8px 0;">
                     <table role="presentation" width="550" cellspacing="0" cellpadding="0" border="0" align="center">
                       <tr>
-                        <td style="font-size:22px; font-weight:bold; color:#545859; padding:0 26px;">{{META}}</td>
+                        <td style="font-family:Arial, Helvetica, sans-serif; font-size:22px; font-weight:bold; line-height:32px; mso-line-height-rule:exactly; color:#545859; padding:0 26px;">{{META}}</td>
                       </tr>
                       <tr>
-                        <td style="font-size:22px; color:#545859; line-height:35px; padding:8px 26px 0 26px;">{{DESC}}</td>
+                        <td style="font-family:Arial, Helvetica, sans-serif; font-size:22px; line-height:35px; mso-line-height-rule:exactly; color:#545859; padding:8px 26px 0 26px;">{{DESC}}</td>
                       </tr>
                     </table>
                   </td>
@@ -154,23 +154,28 @@ const CARD_WHITE_TEMPLATE = `          <!-- property card (light) -->
                         <td style="padding:26px 26px;">
                           <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="right">
                             <tr>
-                              <td style="padding-left:12px;">
-                                <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center">
-                                  <tr>
-                                    <td align="center" style="background-color:#0093AD;" bgcolor="#0093AD">
-                                      <a href="{{DETAILS_URL}}" target="_blank" style="letter-spacing:0.02em; display:inline-block; padding:16px 24px; font-size:21px; font-weight:bold; color:#FFFFFF; text-decoration:none;">לפרטים נוספים</a>
-                                    </td>
-                                  </tr>
-                                </table>
+                              <td align="center" valign="middle" style="padding:0; font-family:Arial, Helvetica, sans-serif;">
+                                <!--[if mso]>
+                                <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{{DETAILS_URL}}" style="height:52px; v-text-anchor:middle; width:200px;" arcsize="0%" stroke="f" fillcolor="#0093AD">
+                                  <w:anchorlock/>
+                                  <center style="color:#ffffff; font-family:Arial, Helvetica, sans-serif; font-size:21px; font-weight:bold; line-height:52px; mso-line-height-rule:exactly;">לפרטים נוספים</center>
+                                </v:roundrect>
+                                <![endif]-->
+                                <!--[if !mso]><!-->
+                                <a href="{{DETAILS_URL}}" target="_blank" style="letter-spacing:0.02em; font-family:Arial, Helvetica, sans-serif; font-size:21px; font-weight:bold; line-height:21px; mso-line-height-rule:exactly; color:#FFFFFF; text-decoration:none; background-color:#0093AD; border:1px solid #0093AD; display:inline-block; padding:16px 24px;">לפרטים נוספים</a>
+                                <!--<![endif]-->
                               </td>
-                              <td>
-                                <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center">
-                                  <tr>
-                                    <td align="center" style="border:1px solid #0093AD; background-color:#FFFFFF;" bgcolor="#FFFFFF">
-                                      <a href="{{WHATSAPP_URL}}" target="_blank" style="letter-spacing:0.02em; display:inline-block; padding:16px 22px; font-size:21px; font-weight:bold; color:#0093AD; text-decoration:none;">{{AGENT_TEXT}}</a>
-                                    </td>
-                                  </tr>
-                                </table>
+                              <td width="12" style="width:12px; font-size:0; line-height:0; mso-line-height-rule:exactly;">&nbsp;</td>
+                              <td align="center" valign="middle" style="padding:0; font-family:Arial, Helvetica, sans-serif;">
+                                <!--[if mso]>
+                                <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{{WHATSAPP_URL}}" style="height:52px; v-text-anchor:middle; width:300px;" arcsize="0%" strokecolor="#0093AD" stroked="t" strokeweight="1px" fillcolor="#ffffff">
+                                  <w:anchorlock/>
+                                  <center style="color:#0093ad; font-family:Arial, Helvetica, sans-serif; font-size:21px; font-weight:bold; line-height:52px; mso-line-height-rule:exactly;">{{AGENT_TEXT}}</center>
+                                </v:roundrect>
+                                <![endif]-->
+                                <!--[if !mso]><!-->
+                                <a href="{{WHATSAPP_URL}}" target="_blank" style="letter-spacing:0.02em; font-family:Arial, Helvetica, sans-serif; font-size:21px; font-weight:bold; line-height:21px; mso-line-height-rule:exactly; color:#0093AD; text-decoration:none; background-color:#FFFFFF; border:1px solid #0093AD; display:inline-block; padding:16px 22px;">{{AGENT_TEXT}}</a>
+                                <!--<![endif]-->
                               </td>
                             </tr>
                           </table>
@@ -194,7 +199,7 @@ const CARD_WHITE_RED_TEMPLATE = `          <!-- property card (light, red accent
                   <td style="padding:38px 0 8px 0;">
                     <table role="presentation" width="550" cellspacing="0" cellpadding="0" border="0" align="center">
                       <tr>
-                        <td style="font-size:40px; font-weight:bold; color:#E4002B; line-height:1.5; padding:0 26px;">{{TITLE_1}}</td>
+                        <td style="font-family:Arial, Helvetica, sans-serif; font-size:40px; font-weight:bold; color:#E4002B; line-height:60px; mso-line-height-rule:exactly; padding:0 26px;">{{TITLE_1}}</td>
                       </tr>
                       {{TITLE_2_ROW}}
                     </table>
@@ -218,10 +223,10 @@ const CARD_WHITE_RED_TEMPLATE = `          <!-- property card (light, red accent
                   <td style="padding:12px 0 8px 0;">
                     <table role="presentation" width="550" cellspacing="0" cellpadding="0" border="0" align="center">
                       <tr>
-                        <td style="font-size:22px; font-weight:bold; color:#545859; padding:0 26px;">{{META}}</td>
+                        <td style="font-family:Arial, Helvetica, sans-serif; font-size:22px; font-weight:bold; line-height:32px; mso-line-height-rule:exactly; color:#545859; padding:0 26px;">{{META}}</td>
                       </tr>
                       <tr>
-                        <td style="font-size:22px; color:#545859; line-height:35px; padding:8px 26px 0 26px;">{{DESC}}</td>
+                        <td style="font-family:Arial, Helvetica, sans-serif; font-size:22px; line-height:35px; mso-line-height-rule:exactly; color:#545859; padding:8px 26px 0 26px;">{{DESC}}</td>
                       </tr>
                     </table>
                   </td>
@@ -234,23 +239,28 @@ const CARD_WHITE_RED_TEMPLATE = `          <!-- property card (light, red accent
                         <td style="padding:26px 26px;">
                           <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="right">
                             <tr>
-                              <td style="padding-left:12px;">
-                                <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center">
-                                  <tr>
-                                    <td align="center" style="background-color:#E4002B;" bgcolor="#E4002B">
-                                      <a href="{{DETAILS_URL}}" target="_blank" style="letter-spacing:0.02em; display:inline-block; padding:16px 24px; font-size:21px; font-weight:bold; color:#FFFFFF; text-decoration:none;">לפרטים נוספים</a>
-                                    </td>
-                                  </tr>
-                                </table>
+                              <td align="center" valign="middle" style="padding:0; font-family:Arial, Helvetica, sans-serif;">
+                                <!--[if mso]>
+                                <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{{DETAILS_URL}}" style="height:52px; v-text-anchor:middle; width:200px;" arcsize="0%" stroke="f" fillcolor="#E4002B">
+                                  <w:anchorlock/>
+                                  <center style="color:#ffffff; font-family:Arial, Helvetica, sans-serif; font-size:21px; font-weight:bold; line-height:52px; mso-line-height-rule:exactly;">לפרטים נוספים</center>
+                                </v:roundrect>
+                                <![endif]-->
+                                <!--[if !mso]><!-->
+                                <a href="{{DETAILS_URL}}" target="_blank" style="letter-spacing:0.02em; font-family:Arial, Helvetica, sans-serif; font-size:21px; font-weight:bold; line-height:21px; mso-line-height-rule:exactly; color:#FFFFFF; text-decoration:none; background-color:#E4002B; border:1px solid #E4002B; display:inline-block; padding:16px 24px;">לפרטים נוספים</a>
+                                <!--<![endif]-->
                               </td>
-                              <td>
-                                <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center">
-                                  <tr>
-                                    <td align="center" style="border:1px solid #E4002B; background-color:#FFFFFF;" bgcolor="#FFFFFF">
-                                      <a href="{{WHATSAPP_URL}}" target="_blank" style="letter-spacing:0.02em; display:inline-block; padding:16px 22px; font-size:21px; font-weight:bold; color:#E4002B; text-decoration:none;">{{AGENT_TEXT}}</a>
-                                    </td>
-                                  </tr>
-                                </table>
+                              <td width="12" style="width:12px; font-size:0; line-height:0; mso-line-height-rule:exactly;">&nbsp;</td>
+                              <td align="center" valign="middle" style="padding:0; font-family:Arial, Helvetica, sans-serif;">
+                                <!--[if mso]>
+                                <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{{WHATSAPP_URL}}" style="height:52px; v-text-anchor:middle; width:300px;" arcsize="0%" strokecolor="#E4002B" stroked="t" strokeweight="1px" fillcolor="#ffffff">
+                                  <w:anchorlock/>
+                                  <center style="color:#e4002b; font-family:Arial, Helvetica, sans-serif; font-size:21px; font-weight:bold; line-height:52px; mso-line-height-rule:exactly;">{{AGENT_TEXT}}</center>
+                                </v:roundrect>
+                                <![endif]-->
+                                <!--[if !mso]><!-->
+                                <a href="{{WHATSAPP_URL}}" target="_blank" style="letter-spacing:0.02em; font-family:Arial, Helvetica, sans-serif; font-size:21px; font-weight:bold; line-height:21px; mso-line-height-rule:exactly; color:#E4002B; text-decoration:none; background-color:#FFFFFF; border:1px solid #E4002B; display:inline-block; padding:16px 22px;">{{AGENT_TEXT}}</a>
+                                <!--<![endif]-->
                               </td>
                             </tr>
                           </table>
@@ -383,7 +393,7 @@ function main() {
     const safeTitle2 = prop.title_2 ? defangGmailAutolink(prop.title_2) : '';
     const title_2_row =
       prop.title_2 && prop.title_2.trim() !== ''
-        ? `<tr><td align="right" dir="rtl" style="font-size:40px; font-weight:bold; text-align:right; color:#0093AD; text-decoration:none; line-height:1.5; padding:4px 26px 0 26px; unicode-bidi:isolate; mso-line-height-rule:exactly;"><a href="#" style="color:#0093AD; text-decoration:none; font-weight:bold;"><span style="color:#0093AD !important; text-decoration:none !important; font-weight:bold; display:inline;">${safeTitle2}</span></a></td></tr>`
+        ? `<tr><td align="right" dir="rtl" style="font-family:Arial, Helvetica, sans-serif; font-size:40px; font-weight:bold; text-align:right; line-height:60px; mso-line-height-rule:exactly; color:#0093AD; text-decoration:none; padding:4px 26px 0 26px; unicode-bidi:isolate;"><a href="#" style="font-family:Arial, Helvetica, sans-serif; font-size:40px; font-weight:bold; line-height:60px; mso-line-height-rule:exactly; color:#0093AD; text-decoration:none;"><span style="font-family:Arial, Helvetica, sans-serif; font-size:40px; font-weight:bold; line-height:60px; mso-line-height-rule:exactly; color:#0093AD !important; text-decoration:none !important; display:inline;">${safeTitle2}</span></a></td></tr>`
         : '';
     const whatsappUrl = buildWhatsAppUrl(prop.agentText);
     const template =
@@ -414,8 +424,8 @@ function main() {
   // Web-optimized version for "view in browser" (responsive, fits viewport)
   let webHtml = outputHtml;
   webHtml = webHtml.replace(
-    '<table role="presentation" width="600" cellspacing="0" cellpadding="0" border="0" align="center" dir="rtl" style="background-color:#FFFFFF; font-family:\'Open Sans Hebrew\', Arial, sans-serif;"',
-    '<table role="presentation" width="600" cellspacing="0" cellpadding="0" border="0" align="center" dir="rtl" class="web-container" style="max-width:600px; background-color:#FFFFFF; font-family:\'Open Sans Hebrew\', Arial, sans-serif;"'
+    '<table role="presentation" width="600" cellspacing="0" cellpadding="0" border="0" align="center" dir="rtl" style="background-color:#FFFFFF; font-family:Arial, Helvetica, sans-serif;"',
+    '<table role="presentation" width="600" cellspacing="0" cellpadding="0" border="0" align="center" dir="rtl" class="web-container" style="max-width:600px; background-color:#FFFFFF; font-family:Arial, Helvetica, sans-serif;"'
   );
   const responsiveCSS = `<style>
 /* Base: fit viewport on small screens, max 600px like original */
