@@ -1,6 +1,11 @@
 {
   "type": "module",
   "scripts": {
-    "build": "node build-newsletter.mjs"
+    "build": "node build-newsletter.mjs",
+    "r2:whoami": "wrangler whoami",
+    "r2:smoke-upload": "node scripts/r2-smoke-upload.mjs"
+  },
+  "devDependencies": {
+    "wrangler": "^4.28.0"
   }
 }

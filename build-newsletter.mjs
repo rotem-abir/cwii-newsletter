@@ -5,7 +5,17 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PROPERTIES_DIR = path.join(__dirname, 'properties');
 const TEMPLATE_PATH = path.join(__dirname, 'template.html');
-const OUTPUT_PATH = path.join(__dirname, 'dist', 'index.build.html');
+function buildYmStamp() {
+  const d = new Date();
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, '0');
+  return `${y}-${m}`;
+}
+
+const YM_STAMP = buildYmStamp();
+const OUTPUT_PATH = path.join(__dirname, 'dist', `index-${YM_STAMP}.build.html`);
+const WEB_OUTPUT_PATH = path.join(__dirname, 'dist', `index-${YM_STAMP}.web.html`);
+const WEB_FILENAME = `index-${YM_STAMP}.web.html`;
 
 const PLACEHOLDER_PROPERTIES = '{{PROPERTIES}}';
 
@@ -17,9 +27,9 @@ const CARD_INDIGO_TEMPLATE = `          <!-- indigo band -->
                 <!-- inner rail -->
                 <tr>
                   <td style="padding:38px 0 8px 0;">
-                    <table role="presentation" width="540" cellspacing="0" cellpadding="0" border="0" align="center">
+                    <table role="presentation" width="550" cellspacing="0" cellpadding="0" border="0" align="center">
                       <tr>
-                        <td style="font-size:38px; font-weight:bold; color:#0093AD; padding:0 30px;">{{TITLE_1}}</td>
+                        <td style="font-size:40px; font-weight:bold; color:#0093AD; padding:0 26px;">{{TITLE_1}}</td>
                       </tr>
                       {{TITLE_2_ROW}}
                     </table>
@@ -41,12 +51,12 @@ const CARD_INDIGO_TEMPLATE = `          <!-- indigo band -->
                 <!-- meta + description -->
                 <tr>
                   <td style="padding:12px 0 8px 0;">
-                    <table role="presentation" width="540" cellspacing="0" cellpadding="0" border="0" align="center">
+                    <table role="presentation" width="550" cellspacing="0" cellpadding="0" border="0" align="center">
                       <tr>
-                        <td style="font-size:20px; font-weight:bold; color:#FFFFFF; padding:0 30px;">{{META}}</td>
+                        <td style="font-size:22px; font-weight:bold; color:#FFFFFF; padding:0 26px;">{{META}}</td>
                       </tr>
                       <tr>
-                        <td style="font-size:20px; color:#FFFFFF; line-height:35px; padding:8px 30px 0 30px;">{{DESC}}</td>
+                        <td style="font-size:22px; color:#FFFFFF; line-height:35px; padding:8px 26px 0 26px;">{{DESC}}</td>
                       </tr>
                     </table>
                   </td>
@@ -54,16 +64,16 @@ const CARD_INDIGO_TEMPLATE = `          <!-- indigo band -->
                 <!-- cta row -->
                 <tr>
                   <td style="padding:12px 0 40px 0;">
-                    <table role="presentation" width="540" cellspacing="0" cellpadding="0" border="0" align="center">
+                    <table role="presentation" width="550" cellspacing="0" cellpadding="0" border="0" align="center">
                       <tr>
-                        <td style="padding:30px 30px;">
+                        <td style="padding:26px 26px;">
                           <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="right">
                             <tr>
                               <td style="padding-left:12px;">
                                 <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center">
                                   <tr>
                                     <td align="center" style="background-color:#0093AD;" bgcolor="#0093AD">
-                                      <a href="{{DETAILS_URL}}" target="_blank" style="letter-spacing:0.02em; display:inline-block; padding:12px 24px; font-size:20px; font-weight:bold; color:#FFFFFF; text-decoration:none;">לפרטים נוספים</a>
+                                      <a href="{{DETAILS_URL}}" target="_blank" style="letter-spacing:0.02em; display:inline-block; padding:16px 24px; font-size:22px; font-weight:bold; color:#FFFFFF; text-decoration:none;">לפרטים נוספים</a>
                                     </td>
                                   </tr>
                                 </table>
@@ -72,7 +82,7 @@ const CARD_INDIGO_TEMPLATE = `          <!-- indigo band -->
                                 <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center">
                                   <tr>
                                     <td align="center" style="border:1px solid #0093AD; background-color:#1D1740;" bgcolor="#1D1740">
-                                      <a href="{{WHATSAPP_URL}}" target="_blank" style="letter-spacing:0.02em; display:inline-block; padding:10px 22px; font-size:20px; font-weight:bold; color:#FFFFFF; text-decoration:none;">{{AGENT_TEXT}}</a>
+                                      <a href="{{WHATSAPP_URL}}" target="_blank" style="letter-spacing:0.02em; display:inline-block; padding:16px 22px; font-size:22px; font-weight:bold; color:#FFFFFF; text-decoration:none;">{{AGENT_TEXT}}</a>
                                     </td>
                                   </tr>
                                 </table>
@@ -97,9 +107,9 @@ const CARD_WHITE_TEMPLATE = `          <!-- property card (light) -->
                 <!-- inner rail -->
                 <tr>
                   <td style="padding:38px 0 8px 0;">
-                    <table role="presentation" width="540" cellspacing="0" cellpadding="0" border="0" align="center">
+                    <table role="presentation" width="550" cellspacing="0" cellpadding="0" border="0" align="center">
                       <tr>
-                        <td style="font-size:38px; font-weight:bold; color:#0093AD; line-height:1.5; padding:0 30px;">{{TITLE_1}}</td>
+                        <td style="font-size:40px; font-weight:bold; color:#0093AD; line-height:1.5; padding:0 26px;">{{TITLE_1}}</td>
                       </tr>
                       {{TITLE_2_ROW}}
                     </table>
@@ -121,12 +131,12 @@ const CARD_WHITE_TEMPLATE = `          <!-- property card (light) -->
                 <!-- meta + description -->
                 <tr>
                   <td style="padding:12px 0 8px 0;">
-                    <table role="presentation" width="540" cellspacing="0" cellpadding="0" border="0" align="center">
+                    <table role="presentation" width="550" cellspacing="0" cellpadding="0" border="0" align="center">
                       <tr>
-                        <td style="font-size:20px; font-weight:bold; color:#1D1740; padding:0 30px;">{{META}}</td>
+                        <td style="font-size:22px; font-weight:bold; color:#545859; padding:0 26px;">{{META}}</td>
                       </tr>
                       <tr>
-                        <td style="font-size:20px; color:#1D1740; line-height:35px; padding:8px 30px 0 30px;">{{DESC}}</td>
+                        <td style="font-size:22px; color:#545859; line-height:35px; padding:8px 26px 0 26px;">{{DESC}}</td>
                       </tr>
                     </table>
                   </td>
@@ -134,16 +144,16 @@ const CARD_WHITE_TEMPLATE = `          <!-- property card (light) -->
                 <!-- cta row -->
                 <tr>
                   <td style="padding:12px 0 40px 0;">
-                    <table role="presentation" width="540" cellspacing="0" cellpadding="0" border="0" align="center">
+                    <table role="presentation" width="550" cellspacing="0" cellpadding="0" border="0" align="center">
                       <tr>
-                        <td style="padding:30px 30px;">
+                        <td style="padding:26px 26px;">
                           <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="right">
                             <tr>
                               <td style="padding-left:12px;">
                                 <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center">
                                   <tr>
                                     <td align="center" style="background-color:#0093AD;" bgcolor="#0093AD">
-                                      <a href="{{DETAILS_URL}}" target="_blank" style="letter-spacing:0.02em; display:inline-block; padding:12px 24px; font-size:20px; font-weight:bold; color:#FFFFFF; text-decoration:none;">לפרטים נוספים</a>
+                                      <a href="{{DETAILS_URL}}" target="_blank" style="letter-spacing:0.02em; display:inline-block; padding:16px 24px; font-size:21px; font-weight:bold; color:#FFFFFF; text-decoration:none;">לפרטים נוספים</a>
                                     </td>
                                   </tr>
                                 </table>
@@ -152,7 +162,7 @@ const CARD_WHITE_TEMPLATE = `          <!-- property card (light) -->
                                 <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center">
                                   <tr>
                                     <td align="center" style="border:1px solid #0093AD; background-color:#FFFFFF;" bgcolor="#FFFFFF">
-                                      <a href="{{WHATSAPP_URL}}" target="_blank" style="letter-spacing:0.02em; display:inline-block; padding:10px 22px; font-size:20px; font-weight:bold; color:#0093AD; text-decoration:none;">{{AGENT_TEXT}}</a>
+                                      <a href="{{WHATSAPP_URL}}" target="_blank" style="letter-spacing:0.02em; display:inline-block; padding:16px 22px; font-size:21px; font-weight:bold; color:#0093AD; text-decoration:none;">{{AGENT_TEXT}}</a>
                                     </td>
                                   </tr>
                                 </table>
@@ -177,9 +187,9 @@ const CARD_WHITE_RED_TEMPLATE = `          <!-- property card (light, red accent
                 <!-- inner rail -->
                 <tr>
                   <td style="padding:38px 0 8px 0;">
-                    <table role="presentation" width="540" cellspacing="0" cellpadding="0" border="0" align="center">
+                    <table role="presentation" width="550" cellspacing="0" cellpadding="0" border="0" align="center">
                       <tr>
-                        <td style="font-size:38px; font-weight:bold; color:#E4002B; line-height:1.5; padding:0 30px;">{{TITLE_1}}</td>
+                        <td style="font-size:40px; font-weight:bold; color:#E4002B; line-height:1.5; padding:0 26px;">{{TITLE_1}}</td>
                       </tr>
                       {{TITLE_2_ROW}}
                     </table>
@@ -201,12 +211,12 @@ const CARD_WHITE_RED_TEMPLATE = `          <!-- property card (light, red accent
                 <!-- meta + description -->
                 <tr>
                   <td style="padding:12px 0 8px 0;">
-                    <table role="presentation" width="540" cellspacing="0" cellpadding="0" border="0" align="center">
+                    <table role="presentation" width="550" cellspacing="0" cellpadding="0" border="0" align="center">
                       <tr>
-                        <td style="font-size:20px; font-weight:bold; color:#545859; padding:0 30px;">{{META}}</td>
+                        <td style="font-size:22px; font-weight:bold; color:#545859; padding:0 26px;">{{META}}</td>
                       </tr>
                       <tr>
-                        <td style="font-size:20px; color:#545859; line-height:35px; padding:8px 30px 0 30px;">{{DESC}}</td>
+                        <td style="font-size:22px; color:#545859; line-height:35px; padding:8px 26px 0 26px;">{{DESC}}</td>
                       </tr>
                     </table>
                   </td>
@@ -214,16 +224,16 @@ const CARD_WHITE_RED_TEMPLATE = `          <!-- property card (light, red accent
                 <!-- cta row -->
                 <tr>
                   <td style="padding:12px 0 40px 0;">
-                    <table role="presentation" width="540" cellspacing="0" cellpadding="0" border="0" align="center">
+                    <table role="presentation" width="550" cellspacing="0" cellpadding="0" border="0" align="center">
                       <tr>
-                        <td style="padding:30px 30px;">
+                        <td style="padding:26px 26px;">
                           <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="right">
                             <tr>
                               <td style="padding-left:12px;">
                                 <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center">
                                   <tr>
                                     <td align="center" style="background-color:#E4002B;" bgcolor="#E4002B">
-                                      <a href="{{DETAILS_URL}}" target="_blank" style="letter-spacing:0.02em; display:inline-block; padding:12px 24px; font-size:20px; font-weight:bold; color:#FFFFFF; text-decoration:none;">לפרטים נוספים</a>
+                                      <a href="{{DETAILS_URL}}" target="_blank" style="letter-spacing:0.02em; display:inline-block; padding:16px 24px; font-size:21px; font-weight:bold; color:#FFFFFF; text-decoration:none;">לפרטים נוספים</a>
                                     </td>
                                   </tr>
                                 </table>
@@ -232,7 +242,7 @@ const CARD_WHITE_RED_TEMPLATE = `          <!-- property card (light, red accent
                                 <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center">
                                   <tr>
                                     <td align="center" style="border:1px solid #E4002B; background-color:#FFFFFF;" bgcolor="#FFFFFF">
-                                      <a href="{{WHATSAPP_URL}}" target="_blank" style="letter-spacing:0.02em; display:inline-block; padding:10px 22px; font-size:20px; font-weight:bold; color:#E4002B; text-decoration:none;">{{AGENT_TEXT}}</a>
+                                      <a href="{{WHATSAPP_URL}}" target="_blank" style="letter-spacing:0.02em; display:inline-block; padding:16px 22px; font-size:21px; font-weight:bold; color:#E4002B; text-decoration:none;">{{AGENT_TEXT}}</a>
                                     </td>
                                   </tr>
                                 </table>
@@ -314,11 +324,20 @@ function parsePropertyFile(filePath, content) {
   return { title_1, title_2, variant, imgUrl, meta, desc, detailsUrl, agentText };
 }
 
+function leadingNumericPrefix(basenameNoExt) {
+  const m = basenameNoExt.match(/^(\d+)/);
+  if (!m) return null;
+  const n = parseInt(m[1], 10);
+  return Number.isNaN(n) ? null : n;
+}
+
 function naturalSort(filenames) {
   return filenames.sort((a, b) => {
-    const numA = parseInt(path.basename(a, '.txt'), 10);
-    const numB = parseInt(path.basename(b, '.txt'), 10);
-    if (!Number.isNaN(numA) && !Number.isNaN(numB)) return numA - numB;
+    const baseA = path.basename(a, '.txt');
+    const baseB = path.basename(b, '.txt');
+    const numA = leadingNumericPrefix(baseA);
+    const numB = leadingNumericPrefix(baseB);
+    if (numA !== null && numB !== null) return numA - numB;
     return String(a).localeCompare(b);
   });
 }
@@ -359,7 +378,7 @@ function main() {
     const safeTitle2 = prop.title_2 ? defangGmailAutolink(prop.title_2) : '';
     const title_2_row =
       prop.title_2 && prop.title_2.trim() !== ''
-        ? `<tr><td align="right" dir="rtl" style="font-size:38px; font-weight:bold; text-align:right; color:#0093AD; text-decoration:none; line-height:1.5; padding:4px 30px 0 30px; unicode-bidi:isolate; mso-line-height-rule:exactly;"><a href="#" style="color:#0093AD; text-decoration:none; font-weight:bold;"><span style="color:#0093AD !important; text-decoration:none !important; font-weight:bold; display:inline;">${safeTitle2}</span></a></td></tr>`
+        ? `<tr><td align="right" dir="rtl" style="font-size:40px; font-weight:bold; text-align:right; color:#0093AD; text-decoration:none; line-height:1.5; padding:4px 26px 0 26px; unicode-bidi:isolate; mso-line-height-rule:exactly;"><a href="#" style="color:#0093AD; text-decoration:none; font-weight:bold;"><span style="color:#0093AD !important; text-decoration:none !important; font-weight:bold; display:inline;">${safeTitle2}</span></a></td></tr>`
         : '';
     const whatsappUrl = buildWhatsAppUrl(prop.agentText);
     const template =
@@ -381,12 +400,47 @@ function main() {
   }
 
   const propertiesHtml = cards.join('\n');
-  const outputHtml = templateHtml.replace(PLACEHOLDER_PROPERTIES, propertiesHtml);
+  let outputHtml = templateHtml.replace(PLACEHOLDER_PROPERTIES, propertiesHtml);
+  outputHtml = outputHtml.replace(/href="index\.web\.html"/g, `href="${WEB_FILENAME}"`);
 
   fs.mkdirSync(path.dirname(OUTPUT_PATH), { recursive: true });
   fs.writeFileSync(OUTPUT_PATH, outputHtml, 'utf8');
 
-  console.log(`Built ${cards.length} cards → dist/index.build.html`);
+  // Web-optimized version for "view in browser" (responsive, fits viewport)
+  let webHtml = outputHtml;
+  webHtml = webHtml.replace(
+    '<table role="presentation" width="600" cellspacing="0" cellpadding="0" border="0" align="center" dir="rtl" style="background-color:#FFFFFF; font-family:\'Open Sans Hebrew\', Arial, sans-serif;"',
+    '<table role="presentation" width="600" cellspacing="0" cellpadding="0" border="0" align="center" dir="rtl" class="web-container" style="max-width:600px; background-color:#FFFFFF; font-family:\'Open Sans Hebrew\', Arial, sans-serif;"'
+  );
+  const responsiveCSS = `<style>
+/* Base: fit viewport on small screens, max 600px like original */
+html { -webkit-text-size-adjust: 100%; }
+.web-container { max-width: 600px !important; width: 100% !important; box-sizing: border-box !important; }
+.web-container table { max-width: 100% !important; box-sizing: border-box !important; }
+.web-container td { box-sizing: border-box !important; }
+.web-container td[width="450"] { max-width: 100% !important; width: 100% !important; height: auto !important; }
+.web-container img { max-width: 100% !important; height: auto !important; min-width: unset !important; width: 100% !important; display: block !important; }
+.web-container img[src*="logo_color"] { width: 230px !important; max-width: 230px !important; height: auto !important; }
+
+@media (max-width: 650px) {
+  .web-container table[width="550"] { max-width: 100% !important; width: 100% !important; }
+  .web-container td[style*="padding:26px 26px"] table[align="right"] tr { display: block !important; }
+  .web-container td[style*="padding:26px 26px"] table[align="right"] td { display: block !important; width: 100% !important; padding: 8px 0 !important; }
+}
+
+@media (max-width: 480px) {
+  .web-container td[style*="padding:26px 26px"] { padding: 16px 16px !important; }
+  .web-container td[style*="padding:0 26px"] { padding-left: 16px !important; padding-right: 16px !important; }
+  .web-container td[style*="padding:20px 0"] { padding: 12px 0 !important; }
+}
+</style>
+`;
+  webHtml = webHtml.replace('</head>', responsiveCSS + '\n</head>');
+  fs.writeFileSync(WEB_OUTPUT_PATH, webHtml, 'utf8');
+
+  console.log(
+    `Built ${cards.length} cards → dist/index-${YM_STAMP}.build.html, dist/index-${YM_STAMP}.web.html`
+  );
 }
 
 main();
