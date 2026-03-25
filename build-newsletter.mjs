@@ -29,7 +29,7 @@ const CARD_INDIGO_TEMPLATE = `          <!-- indigo band -->
                   <td style="padding:38px 0 8px 0;">
                     <table role="presentation" width="550" cellspacing="0" cellpadding="0" border="0" align="center">
                       <tr>
-                        <td style="font-size:40px; font-weight:bold; color:#0093AD; padding:0 26px;">{{TITLE_1}}</td>
+                        <td style="font-family:Arial, Helvetica, sans-serif; font-size:40px; font-weight:bold; line-height:52px; mso-line-height-rule:exactly; color:#0093AD; padding:0 26px;">{{TITLE_1}}</td>
                       </tr>
                       {{TITLE_2_ROW}}
                     </table>
@@ -53,10 +53,10 @@ const CARD_INDIGO_TEMPLATE = `          <!-- indigo band -->
                   <td style="padding:12px 0 8px 0;">
                     <table role="presentation" width="550" cellspacing="0" cellpadding="0" border="0" align="center">
                       <tr>
-                        <td style="font-size:22px; font-weight:bold; color:#FFFFFF; padding:0 26px;">{{META}}</td>
+                        <td style="font-family:Arial, Helvetica, sans-serif; font-size:22px; font-weight:bold; line-height:32px; mso-line-height-rule:exactly; color:#FFFFFF; padding:0 26px;">{{META}}</td>
                       </tr>
                       <tr>
-                        <td style="font-size:22px; color:#FFFFFF; line-height:35px; padding:8px 26px 0 26px;">{{DESC}}</td>
+                        <td style="font-family:Arial, Helvetica, sans-serif; font-size:22px; line-height:35px; mso-line-height-rule:exactly; color:#FFFFFF; padding:8px 26px 0 26px;">{{DESC}}</td>
                       </tr>
                     </table>
                   </td>
@@ -69,23 +69,28 @@ const CARD_INDIGO_TEMPLATE = `          <!-- indigo band -->
                         <td style="padding:26px 26px;">
                           <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="right">
                             <tr>
-                              <td style="padding-left:12px;">
-                                <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center">
-                                  <tr>
-                                    <td align="center" style="background-color:#0093AD;" bgcolor="#0093AD">
-                                      <a href="{{DETAILS_URL}}" target="_blank" style="letter-spacing:0.02em; display:inline-block; padding:16px 24px; font-size:22px; font-weight:bold; color:#FFFFFF; text-decoration:none;">לפרטים נוספים</a>
-                                    </td>
-                                  </tr>
-                                </table>
+                              <td align="center" valign="middle" style="padding:0; font-family:Arial, Helvetica, sans-serif;">
+                                <!--[if mso]>
+                                <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{{DETAILS_URL}}" style="height:54px; v-text-anchor:middle; width:210px;" arcsize="0%" stroke="f" fillcolor="#0093AD">
+                                  <w:anchorlock/>
+                                  <center style="color:#ffffff; font-family:Arial, Helvetica, sans-serif; font-size:22px; font-weight:bold; line-height:54px; mso-line-height-rule:exactly;">לפרטים נוספים</center>
+                                </v:roundrect>
+                                <![endif]-->
+                                <!--[if !mso]><!-->
+                                <a href="{{DETAILS_URL}}" target="_blank" style="letter-spacing:0.02em; font-family:Arial, Helvetica, sans-serif; font-size:22px; font-weight:bold; line-height:22px; mso-line-height-rule:exactly; color:#FFFFFF; text-decoration:none; background-color:#0093AD; border:1px solid #0093AD; display:inline-block; padding:16px 24px;">לפרטים נוספים</a>
+                                <!--<![endif]-->
                               </td>
-                              <td>
-                                <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center">
-                                  <tr>
-                                    <td align="center" style="border:1px solid #0093AD; background-color:#1D1740;" bgcolor="#1D1740">
-                                      <a href="{{WHATSAPP_URL}}" target="_blank" style="letter-spacing:0.02em; display:inline-block; padding:16px 22px; font-size:22px; font-weight:bold; color:#FFFFFF; text-decoration:none;">{{AGENT_TEXT}}</a>
-                                    </td>
-                                  </tr>
-                                </table>
+                              <td width="12" style="width:12px; font-size:0; line-height:0; mso-line-height-rule:exactly;">&nbsp;</td>
+                              <td align="center" valign="middle" style="padding:0; font-family:Arial, Helvetica, sans-serif;">
+                                <!--[if mso]>
+                                <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{{WHATSAPP_URL}}" style="height:54px; v-text-anchor:middle; width:300px;" arcsize="0%" strokecolor="#0093AD" stroked="t" strokeweight="1px" fillcolor="#1D1740">
+                                  <w:anchorlock/>
+                                  <center style="color:#ffffff; font-family:Arial, Helvetica, sans-serif; font-size:22px; font-weight:bold; line-height:54px; mso-line-height-rule:exactly;">{{AGENT_TEXT}}</center>
+                                </v:roundrect>
+                                <![endif]-->
+                                <!--[if !mso]><!-->
+                                <a href="{{WHATSAPP_URL}}" target="_blank" style="letter-spacing:0.02em; font-family:Arial, Helvetica, sans-serif; font-size:22px; font-weight:bold; line-height:22px; mso-line-height-rule:exactly; color:#FFFFFF; text-decoration:none; background-color:#1D1740; border:1px solid #0093AD; display:inline-block; padding:16px 22px;">{{AGENT_TEXT}}</a>
+                                <!--<![endif]-->
                               </td>
                             </tr>
                           </table>
@@ -109,7 +114,7 @@ const CARD_WHITE_TEMPLATE = `          <!-- property card (light) -->
                   <td style="padding:38px 0 8px 0;">
                     <table role="presentation" width="550" cellspacing="0" cellpadding="0" border="0" align="center">
                       <tr>
-                        <td style="font-size:40px; font-weight:bold; color:#0093AD; line-height:1.5; padding:0 26px;">{{TITLE_1}}</td>
+                        <td style="font-family:Arial, Helvetica, sans-serif; font-size:40px; font-weight:bold; color:#0093AD; line-height:60px; mso-line-height-rule:exactly; padding:0 26px;">{{TITLE_1}}</td>
                       </tr>
                       {{TITLE_2_ROW}}
                     </table>
