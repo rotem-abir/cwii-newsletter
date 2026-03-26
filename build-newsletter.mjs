@@ -275,6 +275,22 @@ const CARD_WHITE_RED_TEMPLATE = `          <!-- property card (light, red accent
             </td>
           </tr>`;
 
+const BANNER_IMAGE_URL =
+  'https://pub-38aaae9d5641488e8a3b8c16b08e3c88.r2.dev/newsletter/src/cwinterisrael_properties.jpg';
+
+const BANNER_CARD_HTML = `          <!-- odd-count banner -->
+          <tr>
+            <td style="padding:0; margin:0; background-color:#FFFFFF;" bgcolor="#FFFFFF">
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
+                <tr>
+                  <td align="center" style="padding:0; margin:0;">
+                    <a href="${BANNER_IMAGE_URL}" target="_blank" style="text-decoration:none;"><img src="${BANNER_IMAGE_URL}" alt="" width="600" style="display:block; width:100%; max-width:600px; height:auto; border:0; margin:0;" /></a>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>`;
+
 const DEFAULT_COUNTRY_CODE = '972';
 const WORD_JOINER = '&#x2060;';
 
@@ -431,6 +447,10 @@ function main() {
     cards.push(cardHtml);
   }
 
+  if (cards.length % 2 !== 0) {
+    cards.splice(cards.length - 1, 0, BANNER_CARD_HTML);
+  }
+
   const propertiesHtml = cards.join('\n');
   let outputHtml = templateHtml.replace(PLACEHOLDER_PROPERTIES, propertiesHtml);
   const viewBrowserRaw = process.env.NEWSLETTER_VIEW_IN_BROWSER_URL;
@@ -446,7 +466,9 @@ function main() {
   fs.mkdirSync(path.dirname(OUTPUT_PATH), { recursive: true });
   fs.writeFileSync(OUTPUT_PATH, outputHtml, 'utf8');
 
-  console.log(`Built ${cards.length} cards → dist/${OUTPUT_FILENAME}`);
+  console.log(
+    `Built ${sortedFiles.length} property cards${cards.length > sortedFiles.length ? ' + odd-count banner' : ''} → dist/${OUTPUT_FILENAME}`
+  );
 }
 
 main();
