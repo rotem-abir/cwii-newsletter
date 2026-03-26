@@ -13,11 +13,12 @@ function buildYmStamp() {
 }
 
 const YM_STAMP = buildYmStamp();
-const OUTPUT_PATH = path.join(__dirname, 'dist', `index-${YM_STAMP}.build.html`);
-const WEB_OUTPUT_PATH = path.join(__dirname, 'dist', `index-${YM_STAMP}.web.html`);
-const WEB_FILENAME = `index-${YM_STAMP}.web.html`;
+const OUTPUT_FILENAME = `index-${YM_STAMP}.build.html`;
+const OUTPUT_PATH = path.join(__dirname, 'dist', OUTPUT_FILENAME);
 
 const PLACEHOLDER_PROPERTIES = '{{PROPERTIES}}';
+/** Email-safe: no @font-face; Outlook ignores unknown family and uses Arial. */
+const FONT_STACK_CSS = "'Open Sans Hebrew', Arial, Helvetica, sans-serif";
 
 const CARD_INDIGO_TEMPLATE = `          <!-- indigo band -->
           <tr>
@@ -29,7 +30,7 @@ const CARD_INDIGO_TEMPLATE = `          <!-- indigo band -->
                   <td style="padding:38px 0 8px 0;">
                     <table role="presentation" width="550" cellspacing="0" cellpadding="0" border="0" align="center">
                       <tr>
-                        <td style="font-family:Arial, Helvetica, sans-serif; font-size:40px; font-weight:bold; line-height:52px; mso-line-height-rule:exactly; color:#0093AD; padding:0 26px;">{{TITLE_1}}</td>
+                        <td style="padding:0 26px;">{{TITLE_1}}</td>
                       </tr>
                       {{TITLE_2_ROW}}
                     </table>
@@ -53,10 +54,10 @@ const CARD_INDIGO_TEMPLATE = `          <!-- indigo band -->
                   <td style="padding:12px 0 8px 0;">
                     <table role="presentation" width="550" cellspacing="0" cellpadding="0" border="0" align="center">
                       <tr>
-                        <td style="font-family:Arial, Helvetica, sans-serif; font-size:22px; font-weight:bold; line-height:32px; mso-line-height-rule:exactly; color:#FFFFFF; padding:0 26px;">{{META}}</td>
+                        <td style="font-family:${FONT_STACK_CSS}; font-size:22px; font-weight:bold; line-height:34px; mso-line-height-rule:exactly; color:#FFFFFF; padding:0 26px;">{{META}}</td>
                       </tr>
                       <tr>
-                        <td style="font-family:Arial, Helvetica, sans-serif; font-size:22px; line-height:35px; mso-line-height-rule:exactly; color:#FFFFFF; padding:8px 26px 0 26px;">{{DESC}}</td>
+                        <td style="font-family:${FONT_STACK_CSS}; font-size:22px; line-height:37px; mso-line-height-rule:exactly; color:#FFFFFF; padding:8px 26px 0 26px;">{{DESC}}</td>
                       </tr>
                     </table>
                   </td>
@@ -69,27 +70,27 @@ const CARD_INDIGO_TEMPLATE = `          <!-- indigo band -->
                         <td style="padding:26px 26px;">
                           <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="right">
                             <tr>
-                              <td align="center" valign="middle" style="padding:0; font-family:Arial, Helvetica, sans-serif;">
+                              <td align="center" valign="middle" style="padding:0; font-family:${FONT_STACK_CSS};">
                                 <!--[if mso]>
-                                <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{{DETAILS_URL}}" style="height:54px; v-text-anchor:middle; width:210px;" arcsize="0%" stroke="f" fillcolor="#0093AD">
+                                <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{{DETAILS_URL}}" style="height:56px; v-text-anchor:middle; width:228px;" arcsize="0%" stroke="f" fillcolor="#0093AD">
                                   <w:anchorlock/>
-                                  <center style="color:#ffffff; font-family:Arial, Helvetica, sans-serif; font-size:22px; font-weight:bold; line-height:54px; mso-line-height-rule:exactly;">לפרטים נוספים</center>
+                                  <center style="color:#ffffff; font-family:${FONT_STACK_CSS}; font-size:22px; font-weight:bold; line-height:56px; mso-line-height-rule:exactly;">לפרטים נוספים</center>
                                 </v:roundrect>
                                 <![endif]-->
                                 <!--[if !mso]><!-->
-                                <a href="{{DETAILS_URL}}" target="_blank" style="letter-spacing:0.02em; font-family:Arial, Helvetica, sans-serif; font-size:22px; font-weight:bold; line-height:22px; mso-line-height-rule:exactly; color:#FFFFFF; text-decoration:none; background-color:#0093AD; border:1px solid #0093AD; display:inline-block; padding:16px 24px;">לפרטים נוספים</a>
+                                <a href="{{DETAILS_URL}}" target="_blank" style="letter-spacing:0.02em; font-family:${FONT_STACK_CSS}; font-size:22px; font-weight:bold; line-height:22px; mso-line-height-rule:exactly; color:#FFFFFF; text-decoration:none; background-color:#0093AD; border:1px solid #0093AD; display:inline-block; padding:16px 24px;">לפרטים נוספים</a>
                                 <!--<![endif]-->
                               </td>
-                              <td width="12" style="width:12px; font-size:0; line-height:0; mso-line-height-rule:exactly;">&nbsp;</td>
-                              <td align="center" valign="middle" style="padding:0; font-family:Arial, Helvetica, sans-serif;">
+                              <td width="16" style="width:16px; font-size:0; line-height:0; mso-line-height-rule:exactly;">&nbsp;</td>
+                              <td align="center" valign="middle" style="padding:0; font-family:${FONT_STACK_CSS};">
                                 <!--[if mso]>
-                                <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{{WHATSAPP_URL}}" style="height:54px; v-text-anchor:middle; width:300px;" arcsize="0%" strokecolor="#0093AD" stroked="t" strokeweight="1px" fillcolor="#1D1740">
+                                <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{{WHATSAPP_URL}}" style="height:56px; v-text-anchor:middle; width:332px;" arcsize="0%" strokecolor="#0093AD" stroked="t" strokeweight="1px" fillcolor="#1D1740">
                                   <w:anchorlock/>
-                                  <center style="color:#ffffff; font-family:Arial, Helvetica, sans-serif; font-size:22px; font-weight:bold; line-height:54px; mso-line-height-rule:exactly;">{{AGENT_TEXT}}</center>
+                                  <center style="color:#ffffff; font-family:${FONT_STACK_CSS}; font-size:22px; font-weight:bold; line-height:56px; mso-line-height-rule:exactly;">{{AGENT_TEXT}}</center>
                                 </v:roundrect>
                                 <![endif]-->
                                 <!--[if !mso]><!-->
-                                <a href="{{WHATSAPP_URL}}" target="_blank" style="letter-spacing:0.02em; font-family:Arial, Helvetica, sans-serif; font-size:22px; font-weight:bold; line-height:22px; mso-line-height-rule:exactly; color:#FFFFFF; text-decoration:none; background-color:#1D1740; border:1px solid #0093AD; display:inline-block; padding:16px 22px;">{{AGENT_TEXT}}</a>
+                                <a href="{{WHATSAPP_URL}}" target="_blank" style="letter-spacing:0.02em; font-family:${FONT_STACK_CSS}; font-size:22px; font-weight:bold; line-height:22px; mso-line-height-rule:exactly; color:#FFFFFF; text-decoration:none; background-color:#1D1740; border:1px solid #0093AD; display:inline-block; padding:16px 22px;">{{AGENT_TEXT}}</a>
                                 <!--<![endif]-->
                               </td>
                             </tr>
@@ -114,7 +115,7 @@ const CARD_WHITE_TEMPLATE = `          <!-- property card (light) -->
                   <td style="padding:38px 0 8px 0;">
                     <table role="presentation" width="550" cellspacing="0" cellpadding="0" border="0" align="center">
                       <tr>
-                        <td style="font-family:Arial, Helvetica, sans-serif; font-size:40px; font-weight:bold; color:#0093AD; line-height:60px; mso-line-height-rule:exactly; padding:0 26px;">{{TITLE_1}}</td>
+                        <td style="padding:0 26px;">{{TITLE_1}}</td>
                       </tr>
                       {{TITLE_2_ROW}}
                     </table>
@@ -138,10 +139,10 @@ const CARD_WHITE_TEMPLATE = `          <!-- property card (light) -->
                   <td style="padding:12px 0 8px 0;">
                     <table role="presentation" width="550" cellspacing="0" cellpadding="0" border="0" align="center">
                       <tr>
-                        <td style="font-family:Arial, Helvetica, sans-serif; font-size:22px; font-weight:bold; line-height:32px; mso-line-height-rule:exactly; color:#545859; padding:0 26px;">{{META}}</td>
+                        <td style="font-family:${FONT_STACK_CSS}; font-size:22px; font-weight:bold; line-height:34px; mso-line-height-rule:exactly; color:#545859; padding:0 26px;">{{META}}</td>
                       </tr>
                       <tr>
-                        <td style="font-family:Arial, Helvetica, sans-serif; font-size:22px; line-height:35px; mso-line-height-rule:exactly; color:#545859; padding:8px 26px 0 26px;">{{DESC}}</td>
+                        <td style="font-family:${FONT_STACK_CSS}; font-size:22px; line-height:37px; mso-line-height-rule:exactly; color:#545859; padding:8px 26px 0 26px;">{{DESC}}</td>
                       </tr>
                     </table>
                   </td>
@@ -154,27 +155,27 @@ const CARD_WHITE_TEMPLATE = `          <!-- property card (light) -->
                         <td style="padding:26px 26px;">
                           <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="right">
                             <tr>
-                              <td align="center" valign="middle" style="padding:0; font-family:Arial, Helvetica, sans-serif;">
+                              <td align="center" valign="middle" style="padding:0; font-family:${FONT_STACK_CSS};">
                                 <!--[if mso]>
-                                <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{{DETAILS_URL}}" style="height:52px; v-text-anchor:middle; width:200px;" arcsize="0%" stroke="f" fillcolor="#0093AD">
+                                <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{{DETAILS_URL}}" style="height:54px; v-text-anchor:middle; width:218px;" arcsize="0%" stroke="f" fillcolor="#0093AD">
                                   <w:anchorlock/>
-                                  <center style="color:#ffffff; font-family:Arial, Helvetica, sans-serif; font-size:21px; font-weight:bold; line-height:52px; mso-line-height-rule:exactly;">לפרטים נוספים</center>
+                                  <center style="color:#ffffff; font-family:${FONT_STACK_CSS}; font-size:21px; font-weight:bold; line-height:54px; mso-line-height-rule:exactly;">לפרטים נוספים</center>
                                 </v:roundrect>
                                 <![endif]-->
                                 <!--[if !mso]><!-->
-                                <a href="{{DETAILS_URL}}" target="_blank" style="letter-spacing:0.02em; font-family:Arial, Helvetica, sans-serif; font-size:21px; font-weight:bold; line-height:21px; mso-line-height-rule:exactly; color:#FFFFFF; text-decoration:none; background-color:#0093AD; border:1px solid #0093AD; display:inline-block; padding:16px 24px;">לפרטים נוספים</a>
+                                <a href="{{DETAILS_URL}}" target="_blank" style="letter-spacing:0.02em; font-family:${FONT_STACK_CSS}; font-size:21px; font-weight:bold; line-height:21px; mso-line-height-rule:exactly; color:#FFFFFF; text-decoration:none; background-color:#0093AD; border:1px solid #0093AD; display:inline-block; padding:16px 24px;">לפרטים נוספים</a>
                                 <!--<![endif]-->
                               </td>
-                              <td width="12" style="width:12px; font-size:0; line-height:0; mso-line-height-rule:exactly;">&nbsp;</td>
-                              <td align="center" valign="middle" style="padding:0; font-family:Arial, Helvetica, sans-serif;">
+                              <td width="16" style="width:16px; font-size:0; line-height:0; mso-line-height-rule:exactly;">&nbsp;</td>
+                              <td align="center" valign="middle" style="padding:0; font-family:${FONT_STACK_CSS};">
                                 <!--[if mso]>
-                                <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{{WHATSAPP_URL}}" style="height:52px; v-text-anchor:middle; width:300px;" arcsize="0%" strokecolor="#0093AD" stroked="t" strokeweight="1px" fillcolor="#ffffff">
+                                <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{{WHATSAPP_URL}}" style="height:54px; v-text-anchor:middle; width:332px;" arcsize="0%" strokecolor="#0093AD" stroked="t" strokeweight="1px" fillcolor="#ffffff">
                                   <w:anchorlock/>
-                                  <center style="color:#0093ad; font-family:Arial, Helvetica, sans-serif; font-size:21px; font-weight:bold; line-height:52px; mso-line-height-rule:exactly;">{{AGENT_TEXT}}</center>
+                                  <center style="color:#0093ad; font-family:${FONT_STACK_CSS}; font-size:21px; font-weight:bold; line-height:54px; mso-line-height-rule:exactly;">{{AGENT_TEXT}}</center>
                                 </v:roundrect>
                                 <![endif]-->
                                 <!--[if !mso]><!-->
-                                <a href="{{WHATSAPP_URL}}" target="_blank" style="letter-spacing:0.02em; font-family:Arial, Helvetica, sans-serif; font-size:21px; font-weight:bold; line-height:21px; mso-line-height-rule:exactly; color:#0093AD; text-decoration:none; background-color:#FFFFFF; border:1px solid #0093AD; display:inline-block; padding:16px 22px;">{{AGENT_TEXT}}</a>
+                                <a href="{{WHATSAPP_URL}}" target="_blank" style="letter-spacing:0.02em; font-family:${FONT_STACK_CSS}; font-size:21px; font-weight:bold; line-height:21px; mso-line-height-rule:exactly; color:#0093AD; text-decoration:none; background-color:#FFFFFF; border:1px solid #0093AD; display:inline-block; padding:16px 22px;">{{AGENT_TEXT}}</a>
                                 <!--<![endif]-->
                               </td>
                             </tr>
@@ -199,7 +200,7 @@ const CARD_WHITE_RED_TEMPLATE = `          <!-- property card (light, red accent
                   <td style="padding:38px 0 8px 0;">
                     <table role="presentation" width="550" cellspacing="0" cellpadding="0" border="0" align="center">
                       <tr>
-                        <td style="font-family:Arial, Helvetica, sans-serif; font-size:40px; font-weight:bold; color:#E4002B; line-height:60px; mso-line-height-rule:exactly; padding:0 26px;">{{TITLE_1}}</td>
+                        <td style="padding:0 26px;">{{TITLE_1}}</td>
                       </tr>
                       {{TITLE_2_ROW}}
                     </table>
@@ -223,10 +224,10 @@ const CARD_WHITE_RED_TEMPLATE = `          <!-- property card (light, red accent
                   <td style="padding:12px 0 8px 0;">
                     <table role="presentation" width="550" cellspacing="0" cellpadding="0" border="0" align="center">
                       <tr>
-                        <td style="font-family:Arial, Helvetica, sans-serif; font-size:22px; font-weight:bold; line-height:32px; mso-line-height-rule:exactly; color:#545859; padding:0 26px;">{{META}}</td>
+                        <td style="font-family:${FONT_STACK_CSS}; font-size:22px; font-weight:bold; line-height:34px; mso-line-height-rule:exactly; color:#545859; padding:0 26px;">{{META}}</td>
                       </tr>
                       <tr>
-                        <td style="font-family:Arial, Helvetica, sans-serif; font-size:22px; line-height:35px; mso-line-height-rule:exactly; color:#545859; padding:8px 26px 0 26px;">{{DESC}}</td>
+                        <td style="font-family:${FONT_STACK_CSS}; font-size:22px; line-height:37px; mso-line-height-rule:exactly; color:#545859; padding:8px 26px 0 26px;">{{DESC}}</td>
                       </tr>
                     </table>
                   </td>
@@ -239,27 +240,27 @@ const CARD_WHITE_RED_TEMPLATE = `          <!-- property card (light, red accent
                         <td style="padding:26px 26px;">
                           <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="right">
                             <tr>
-                              <td align="center" valign="middle" style="padding:0; font-family:Arial, Helvetica, sans-serif;">
+                              <td align="center" valign="middle" style="padding:0; font-family:${FONT_STACK_CSS};">
                                 <!--[if mso]>
-                                <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{{DETAILS_URL}}" style="height:52px; v-text-anchor:middle; width:200px;" arcsize="0%" stroke="f" fillcolor="#E4002B">
+                                <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{{DETAILS_URL}}" style="height:54px; v-text-anchor:middle; width:218px;" arcsize="0%" stroke="f" fillcolor="#E4002B">
                                   <w:anchorlock/>
-                                  <center style="color:#ffffff; font-family:Arial, Helvetica, sans-serif; font-size:21px; font-weight:bold; line-height:52px; mso-line-height-rule:exactly;">לפרטים נוספים</center>
+                                  <center style="color:#ffffff; font-family:${FONT_STACK_CSS}; font-size:21px; font-weight:bold; line-height:54px; mso-line-height-rule:exactly;">לפרטים נוספים</center>
                                 </v:roundrect>
                                 <![endif]-->
                                 <!--[if !mso]><!-->
-                                <a href="{{DETAILS_URL}}" target="_blank" style="letter-spacing:0.02em; font-family:Arial, Helvetica, sans-serif; font-size:21px; font-weight:bold; line-height:21px; mso-line-height-rule:exactly; color:#FFFFFF; text-decoration:none; background-color:#E4002B; border:1px solid #E4002B; display:inline-block; padding:16px 24px;">לפרטים נוספים</a>
+                                <a href="{{DETAILS_URL}}" target="_blank" style="letter-spacing:0.02em; font-family:${FONT_STACK_CSS}; font-size:21px; font-weight:bold; line-height:21px; mso-line-height-rule:exactly; color:#FFFFFF; text-decoration:none; background-color:#E4002B; border:1px solid #E4002B; display:inline-block; padding:16px 24px;">לפרטים נוספים</a>
                                 <!--<![endif]-->
                               </td>
-                              <td width="12" style="width:12px; font-size:0; line-height:0; mso-line-height-rule:exactly;">&nbsp;</td>
-                              <td align="center" valign="middle" style="padding:0; font-family:Arial, Helvetica, sans-serif;">
+                              <td width="16" style="width:16px; font-size:0; line-height:0; mso-line-height-rule:exactly;">&nbsp;</td>
+                              <td align="center" valign="middle" style="padding:0; font-family:${FONT_STACK_CSS};">
                                 <!--[if mso]>
-                                <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{{WHATSAPP_URL}}" style="height:52px; v-text-anchor:middle; width:300px;" arcsize="0%" strokecolor="#E4002B" stroked="t" strokeweight="1px" fillcolor="#ffffff">
+                                <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{{WHATSAPP_URL}}" style="height:54px; v-text-anchor:middle; width:332px;" arcsize="0%" strokecolor="#E4002B" stroked="t" strokeweight="1px" fillcolor="#ffffff">
                                   <w:anchorlock/>
-                                  <center style="color:#e4002b; font-family:Arial, Helvetica, sans-serif; font-size:21px; font-weight:bold; line-height:52px; mso-line-height-rule:exactly;">{{AGENT_TEXT}}</center>
+                                  <center style="color:#e4002b; font-family:${FONT_STACK_CSS}; font-size:21px; font-weight:bold; line-height:54px; mso-line-height-rule:exactly;">{{AGENT_TEXT}}</center>
                                 </v:roundrect>
                                 <![endif]-->
                                 <!--[if !mso]><!-->
-                                <a href="{{WHATSAPP_URL}}" target="_blank" style="letter-spacing:0.02em; font-family:Arial, Helvetica, sans-serif; font-size:21px; font-weight:bold; line-height:21px; mso-line-height-rule:exactly; color:#E4002B; text-decoration:none; background-color:#FFFFFF; border:1px solid #E4002B; display:inline-block; padding:16px 22px;">{{AGENT_TEXT}}</a>
+                                <a href="{{WHATSAPP_URL}}" target="_blank" style="letter-spacing:0.02em; font-family:${FONT_STACK_CSS}; font-size:21px; font-weight:bold; line-height:21px; mso-line-height-rule:exactly; color:#E4002B; text-decoration:none; background-color:#FFFFFF; border:1px solid #E4002B; display:inline-block; padding:16px 22px;">{{AGENT_TEXT}}</a>
                                 <!--<![endif]-->
                               </td>
                             </tr>
@@ -277,12 +278,26 @@ const CARD_WHITE_RED_TEMPLATE = `          <!-- property card (light, red accent
 const DEFAULT_COUNTRY_CODE = '972';
 const WORD_JOINER = '&#x2060;';
 
+function htmlEscape(text) {
+  if (typeof text !== 'string') return '';
+  return text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
 function defangGmailAutolink(text) {
   if (typeof text !== 'string') return '';
   let s = text.replace(/(\d)/g, '$1' + WORD_JOINER);
   s = s.replace(/([,\-])/g, '$1' + WORD_JOINER);
   s = s.replace(/ /g, '&nbsp;');
   return s;
+}
+
+function buildPropertyTitleHtml(text, colorHex, lineHeightPx) {
+  const inner = defangGmailAutolink(htmlEscape(text));
+  return `<span class="x-gmail-data-detectors property-title-text" style="font-family:${FONT_STACK_CSS}; font-size:40px; font-weight:bold; line-height:${lineHeightPx}px; mso-line-height-rule:exactly; color:${colorHex} !important; text-decoration:none !important; border-bottom:0 !important; cursor:text !important;">${inner}</span>`;
 }
 
 function buildWhatsAppUrl(agentText) {
@@ -390,10 +405,12 @@ function main() {
     }
 
     const accent = prop.variant === 'WHITE_RED' ? '#E4002B' : '#0093AD';
-    const safeTitle2 = prop.title_2 ? defangGmailAutolink(prop.title_2) : '';
+    const title1LineHeight = prop.variant === 'WHITE_RED' ? 60 : i % 2 === 0 ? 52 : 60;
+    const title1Html = buildPropertyTitleHtml(prop.title_1, accent, title1LineHeight);
+    const safeTitle2 = prop.title_2 ? defangGmailAutolink(htmlEscape(prop.title_2)) : '';
     const title_2_row =
       prop.title_2 && prop.title_2.trim() !== ''
-        ? `<tr><td align="right" dir="rtl" style="font-family:Arial, Helvetica, sans-serif; font-size:40px; font-weight:bold; text-align:right; line-height:60px; mso-line-height-rule:exactly; color:#0093AD; text-decoration:none; padding:4px 26px 0 26px; unicode-bidi:isolate;"><a href="#" style="font-family:Arial, Helvetica, sans-serif; font-size:40px; font-weight:bold; line-height:60px; mso-line-height-rule:exactly; color:#0093AD; text-decoration:none;"><span style="font-family:Arial, Helvetica, sans-serif; font-size:40px; font-weight:bold; line-height:60px; mso-line-height-rule:exactly; color:#0093AD !important; text-decoration:none !important; display:inline;">${safeTitle2}</span></a></td></tr>`
+        ? `<tr><td align="right" dir="rtl" class="property-title-line" style="padding:4px 26px 0 26px; unicode-bidi:isolate;"><span class="x-gmail-data-detectors property-title-text" style="font-family:${FONT_STACK_CSS}; font-size:40px; font-weight:bold; text-align:right; line-height:60px; mso-line-height-rule:exactly; color:${accent} !important; text-decoration:none !important; border-bottom:0 !important; cursor:text !important; display:block;">${safeTitle2}</span></td></tr>`
         : '';
     const whatsappUrl = buildWhatsAppUrl(prop.agentText);
     const template =
@@ -403,7 +420,7 @@ function main() {
           ? CARD_INDIGO_TEMPLATE
           : CARD_WHITE_TEMPLATE;
     const cardHtml = template
-      .replace(/\{\{TITLE_1\}\}/g, prop.title_1)
+      .replace(/\{\{TITLE_1\}\}/g, title1Html)
       .replace(/\{\{TITLE_2_ROW\}\}/g, title_2_row)
       .replace(/\{\{IMG\}\}/g, prop.imgUrl)
       .replace(/\{\{META\}\}/g, prop.meta)
@@ -416,46 +433,12 @@ function main() {
 
   const propertiesHtml = cards.join('\n');
   let outputHtml = templateHtml.replace(PLACEHOLDER_PROPERTIES, propertiesHtml);
-  outputHtml = outputHtml.replace(/href="index\.web\.html"/g, `href="${WEB_FILENAME}"`);
+  outputHtml = outputHtml.replace(/href="index\.web\.html"/g, `href="${OUTPUT_FILENAME}"`);
 
   fs.mkdirSync(path.dirname(OUTPUT_PATH), { recursive: true });
   fs.writeFileSync(OUTPUT_PATH, outputHtml, 'utf8');
 
-  // Web-optimized version for "view in browser" (responsive, fits viewport)
-  let webHtml = outputHtml;
-  webHtml = webHtml.replace(
-    '<table role="presentation" width="600" cellspacing="0" cellpadding="0" border="0" align="center" dir="rtl" style="background-color:#FFFFFF; font-family:Arial, Helvetica, sans-serif;"',
-    '<table role="presentation" width="600" cellspacing="0" cellpadding="0" border="0" align="center" dir="rtl" class="web-container" style="max-width:600px; background-color:#FFFFFF; font-family:Arial, Helvetica, sans-serif;"'
-  );
-  const responsiveCSS = `<style>
-/* Base: fit viewport on small screens, max 600px like original */
-html { -webkit-text-size-adjust: 100%; }
-.web-container { max-width: 600px !important; width: 100% !important; box-sizing: border-box !important; }
-.web-container table { max-width: 100% !important; box-sizing: border-box !important; }
-.web-container td { box-sizing: border-box !important; }
-.web-container td[width="450"] { max-width: 100% !important; width: 100% !important; height: auto !important; }
-.web-container img { max-width: 100% !important; height: auto !important; min-width: unset !important; width: 100% !important; display: block !important; }
-.web-container img[src*="logo_color"] { width: 230px !important; max-width: 230px !important; height: auto !important; }
-
-@media (max-width: 650px) {
-  .web-container table[width="550"] { max-width: 100% !important; width: 100% !important; }
-  .web-container td[style*="padding:26px 26px"] table[align="right"] tr { display: block !important; }
-  .web-container td[style*="padding:26px 26px"] table[align="right"] td { display: block !important; width: 100% !important; padding: 8px 0 !important; }
-}
-
-@media (max-width: 480px) {
-  .web-container td[style*="padding:26px 26px"] { padding: 16px 16px !important; }
-  .web-container td[style*="padding:0 26px"] { padding-left: 16px !important; padding-right: 16px !important; }
-  .web-container td[style*="padding:20px 0"] { padding: 12px 0 !important; }
-}
-</style>
-`;
-  webHtml = webHtml.replace('</head>', responsiveCSS + '\n</head>');
-  fs.writeFileSync(WEB_OUTPUT_PATH, webHtml, 'utf8');
-
-  console.log(
-    `Built ${cards.length} cards → dist/index-${YM_STAMP}.build.html, dist/index-${YM_STAMP}.web.html`
-  );
+  console.log(`Built ${cards.length} cards → dist/${OUTPUT_FILENAME}`);
 }
 
 main();
