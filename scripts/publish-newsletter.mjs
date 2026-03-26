@@ -75,7 +75,7 @@ async function main() {
   console.log('[publish] Public URL (injected into HTML):', publicUrl);
   console.log('[publish] Building with NEWSLETTER_VIEW_IN_BROWSER_URL set…');
 
-  const buildResult = spawnSync(process.execPath, [path.join(root, 'build-newsletter.mjs')], {
+  const buildResult = spawnSync(process.execPath, [path.join(root, 'scripts', 'build-newsletter.mjs')], {
     cwd: root,
     stdio: 'inherit',
     env: process.env,

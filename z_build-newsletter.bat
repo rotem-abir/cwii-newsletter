@@ -1,2 +1,4 @@
 @echo off
-call "%~dp0build-newsletter.bat" %*
+cd /d "%~dp0"
+node scripts\build-newsletter.mjs
+pause

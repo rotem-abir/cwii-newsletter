@@ -46,7 +46,7 @@ If the bucket is served publicly, check `R2_PUBLIC_BASE_URL` + that path in a br
 
 ## Newsletter publish (later)
 
-Publish: `publish-newsletter.bat` uploads `dist/index-YYYY-MM.html` to R2, e.g. `newsletter/index-YYYY-MM.html`.
+Publish: run `z_publish-newsletter.bat` (calls `scripts/publish-newsletter.bat`) or `npm run publish` (Node). Uploads `dist/index-YYYY-MM.html` to R2, e.g. `newsletter/index-YYYY-MM.html`.
 
 ### Contract
 

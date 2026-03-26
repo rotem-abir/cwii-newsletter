@@ -3,8 +3,9 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const PROPERTIES_DIR = path.join(__dirname, 'properties');
-const TEMPLATE_PATH = path.join(__dirname, 'template.html');
+const root = path.join(__dirname, '..');
+const PROPERTIES_DIR = path.join(root, 'properties');
+const TEMPLATE_PATH = path.join(root, 'template.html');
 function buildYmStamp() {
   const d = new Date();
   const y = d.getFullYear();
@@ -14,7 +15,7 @@ function buildYmStamp() {
 
 const YM_STAMP = buildYmStamp();
 const OUTPUT_FILENAME = `index-${YM_STAMP}.html`;
-const OUTPUT_PATH = path.join(__dirname, 'dist', OUTPUT_FILENAME);
+const OUTPUT_PATH = path.join(root, 'dist', OUTPUT_FILENAME);
 
 const PLACEHOLDER_PROPERTIES = '{{PROPERTIES}}';
 /** Email-safe: no @font-face; Outlook ignores unknown family and uses Arial. */

@@ -1,8 +1,8 @@
 @echo off
 setlocal EnableExtensions EnableDelayedExpansion
-cd /d "%~dp0"
+cd /d "%~dp0.."
 
-call build-newsletter.bat nopause
+node scripts\build-newsletter.mjs
 if errorlevel 1 (
   echo [publish] BUILD FAILED
   goto :endfail
@@ -23,7 +23,7 @@ echo [publish] No dist\index-*.html found
 goto :endfail
 
 :havefile
-set "LOCAL_FILE=%~dp0dist\!BUILD_FILE!"
+set "LOCAL_FILE=%CD%\dist\!BUILD_FILE!"
 set "REMOTE_NAME=!BUILD_FILE!"
 
 REM Load .env (KEY=VALUE; # comments; value may contain =)

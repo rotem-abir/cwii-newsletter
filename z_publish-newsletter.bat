@@ -1,2 +1,4 @@
 @echo off
-call "%~dp0publish-newsletter.bat" %*
+cd /d "%~dp0"
+call "%~dp0scripts\publish-newsletter.bat"
+exit /b %ERRORLEVEL%
