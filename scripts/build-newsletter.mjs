@@ -278,6 +278,7 @@ const CARD_WHITE_RED_TEMPLATE = `          <!-- property card (light, red accent
 
 const BANNER_IMAGE_URL =
   'https://pub-38aaae9d5641488e8a3b8c16b08e3c88.r2.dev/newsletter/src/cwinterisrael_properties.jpg';
+const BANNER_LINK_URL = 'https://www.cw-inter-israel.com/properties?lang=he';
 
 const BANNER_CARD_HTML = `          <!-- odd-count banner -->
           <tr>
@@ -285,7 +286,7 @@ const BANNER_CARD_HTML = `          <!-- odd-count banner -->
               <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
                 <tr>
                   <td align="center" style="padding:0; margin:0;">
-                    <a href="${BANNER_IMAGE_URL}" target="_blank" style="text-decoration:none;"><img src="${BANNER_IMAGE_URL}" alt="" width="600" style="display:block; width:100%; max-width:600px; height:auto; border:0; margin:0;" /></a>
+                    <a href="${BANNER_LINK_URL}" target="_blank" style="text-decoration:none;"><img src="${BANNER_IMAGE_URL}" alt="" width="600" style="display:block; width:100%; max-width:600px; height:auto; border:0; margin:0;" /></a>
                   </td>
                 </tr>
               </table>
