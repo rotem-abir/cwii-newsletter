@@ -433,7 +433,15 @@ function main() {
 
   const propertiesHtml = cards.join('\n');
   let outputHtml = templateHtml.replace(PLACEHOLDER_PROPERTIES, propertiesHtml);
-  outputHtml = outputHtml.replace(/href="index\.web\.html"/g, `href="${OUTPUT_FILENAME}"`);
+  const viewBrowserRaw = process.env.NEWSLETTER_VIEW_IN_BROWSER_URL;
+  const viewBrowserHref =
+    typeof viewBrowserRaw === 'string' && viewBrowserRaw.trim() !== ''
+      ? viewBrowserRaw.trim()
+      : OUTPUT_FILENAME;
+  const viewBrowserAttr = viewBrowserHref
+    .replace(/&/g, '&amp;')
+    .replace(/"/g, '&quot;');
+  outputHtml = outputHtml.replace(/href="index\.web\.html"/g, `href="${viewBrowserAttr}"`);
 
   fs.mkdirSync(path.dirname(OUTPUT_PATH), { recursive: true });
   fs.writeFileSync(OUTPUT_PATH, outputHtml, 'utf8');

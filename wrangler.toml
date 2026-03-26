@@ -1,3 +1,4 @@
 # Stub for Cloudflare tooling. R2 uploads use `wrangler r2 object put` (no Worker deploy yet).
 name = "newsletter-r2-prep"
 compatibility_date = "2025-03-01"
+account_id = "7bf6232991af74ccf9f0960727e0bc90"
