@@ -9,8 +9,7 @@ npm run build
 
 Writes dated HTML under `dist/`:
 
-- `dist/index-YYYY-MM.build.html` — email version
-- `dist/index-YYYY-MM.web.html` — browser / mobile version
+- `dist/index-YYYY-MM.html` — single output (email + “view in browser”)
 
 (`YYYY-MM` is the calendar month when the build runs.)
 
@@ -47,12 +46,7 @@ If the bucket is served publicly, check `R2_PUBLIC_BASE_URL` + that path in a br
 
 ## Newsletter publish (later)
 
-A Windows batch script will upload the two generated files from `dist/` to R2 under your prefix, e.g.:
-
-- `newsletter/index-YYYY-MM.build.html`
-- `newsletter/index-YYYY-MM.web.html`
-
-That script is **not** part of this repo yet.
+Publish: `publish-newsletter.bat` uploads `dist/index-YYYY-MM.html` to R2, e.g. `newsletter/index-YYYY-MM.html`.
 
 ### Contract
 

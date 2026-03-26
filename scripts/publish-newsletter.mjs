@@ -65,7 +65,7 @@ async function main() {
   if (!prefix) prefix = 'newsletter';
 
   const ym = buildYmStamp();
-  const outputFilename = `index-${ym}.build.html`;
+  const outputFilename = `index-${ym}.html`;
   const objectKey = `${prefix}/${outputFilename}`;
   const publicUrl = `${publicBase.replace(/\/+$/, '')}/${objectKey}`;
   const localPath = path.join(root, 'dist', outputFilename);

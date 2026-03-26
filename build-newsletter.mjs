@@ -13,7 +13,7 @@ function buildYmStamp() {
 }
 
 const YM_STAMP = buildYmStamp();
-const OUTPUT_FILENAME = `index-${YM_STAMP}.build.html`;
+const OUTPUT_FILENAME = `index-${YM_STAMP}.html`;
 const OUTPUT_PATH = path.join(__dirname, 'dist', OUTPUT_FILENAME);
 
 const PLACEHOLDER_PROPERTIES = '{{PROPERTIES}}';

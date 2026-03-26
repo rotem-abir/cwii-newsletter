@@ -13,19 +13,18 @@ if not exist "dist\" (
   goto :endfail
 )
 
-REM Pick newest index-*.build.html by last write time (do not use %%DATE%%)
+REM Pick newest dist\index-YYYY-MM.html by last write time (do not use %%DATE%%)
 set "BUILD_FILE="
-for /f "delims=" %%F in ('dir /b /o-d "dist\index-*.build.html" 2^>nul') do (
+for /f "delims=" %%F in ('dir /b /o-d "dist\index-*.html" 2^>nul') do (
   set "BUILD_FILE=%%F"
   goto :havefile
 )
-echo [publish] No dist\index-*.build.html found
+echo [publish] No dist\index-*.html found
 goto :endfail
 
 :havefile
 set "LOCAL_FILE=%~dp0dist\!BUILD_FILE!"
-REM index-2026-03.build.html -^> index-2026-03.html
-set "REMOTE_NAME=!BUILD_FILE:.build.html=.html!"
+set "REMOTE_NAME=!BUILD_FILE!"
 
 REM Load .env (KEY=VALUE; # comments; value may contain =)
 if exist ".env" (
